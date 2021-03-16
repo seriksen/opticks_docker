@@ -1,4 +1,4 @@
-export PS1='\[\033[02;32m\]\u@optix_docker:\[\033[02;34m\]\w\$\[\033[00m\] '
+export PS1='\[\033[02;32m\]\u@opticks_docker:\[\033[02;34m\]\w\$\[\033[00m\] '
 
 export LD_LIBRARY_PATH=/usr/lib64:/usr/lib:${LD_LIRARY_PATH}
 
