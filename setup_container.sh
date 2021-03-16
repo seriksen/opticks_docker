@@ -5,17 +5,12 @@ container-name(){
 }
 
 build-opticks() {
-  if [ $# -eq 0 ]
-  then
-    docker build --no-cache=true -t $(container-name) .
-  else
-    args=""
-    for arg in "$@"
-    do
-      args="${args} --build-args ${arg}"
-    done
-    docker build --no-cache=true -t $(container-name) ${args} .
-  fi
+  args=""
+  for arg in "$@"
+  do
+    args="${args} --build-args ${arg}"
+  done
+  docker build --no-cache=true -t $(container-name) ${args} .
 }
 
 run-opticks() {
@@ -43,6 +38,6 @@ run-opticks() {
   --rm=true \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /etc/localtime:/etc/localtime:ro \
-  ${optix_mounts} \
+  ${optix_mounts} $@\
   $(container-name)
 }
