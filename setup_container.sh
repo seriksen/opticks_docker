@@ -32,6 +32,7 @@ run-opticks() {
   docker run -it \
   --runtime=nvidia \
   --name=$(container-name) \
+  --gpus 1 \
   --security-opt seccomp=unconfined \
   --init \
   --net=host \
