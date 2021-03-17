@@ -24,11 +24,6 @@ sudo yum -y install git \
             openssl-devel \
             cuda-samples-${cuda_version}.x86_64
 
-# Get gcc 4.9.3+ needed for G4.10.06.p02
-sudo yum -y install centos-release-scl
-sudo yum -y install devtoolset-7
-scl enable devtoolset-7 bash
-
 export OPTICKS_EXTERNALS="${OPTICKS_EXTERNALS:-${HOME}/opticks_externals}"
 
 cmake_ver=3.14.1
@@ -83,7 +78,6 @@ cd xerces-c-${xerces_version}
 ./configure --prefix=${dir}/xerces-c-${xerces_version}-install
 sudo make install
 
-scl enable devtoolset-7 bash
 g4_version=geant4.10.06.p02
 dir=${OPTICKS_EXTERNALS}/g4
 mkdir -p ${dir}
