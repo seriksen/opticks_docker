@@ -4,7 +4,13 @@ opticks_docker
 Dockerfile for creating docker images for use with Opticks GPU simulations.
 Currently it's just an extention of `optix_docker <https://github.com/seriksen/optix_docker>`_ where
 the externals are installed.
-The installation of opticks follows the guide `here <https://github.com/seriksen/Opticks_install_guide>`_.
+
+You still need to clone and build opticks as descriped in the installation guide
+`here <https://github.com/seriksen/Opticks_install_guide>`_.
+
+.. todo::
+   Add to dockerfile to build opticks rather than that being an extra step. Though worthwhile having this as the
+   'has all externals' version for a future CI.
 
 Dockerfile overview
 -------------------
