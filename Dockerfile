@@ -68,6 +68,8 @@ RUN cd && echo "source ${HOME}/.bashrc_customisation.sh" >> .bashrc
 ENV LD_LIBRARY_PATH=/usr/lib64:/usr/lib:${LD_LIRARY_PATH}
 
 COPY opticks_externals_installer.sh /home/${DOCKER_USER}
-RUN cd /home/${DOCKER_USER} && export OPTICKS_EXTERNALS=/home/${DOCKER_USER}/opticks_externals && bash opticks_externals_installer.sh
+RUN cd /home/${DOCKER_USER} \
+    && export OPTICKS_EXTERNALS=/home/${DOCKER_USER}/opticks_externals \
+    && bash opticks_externals_installer.sh
 
 

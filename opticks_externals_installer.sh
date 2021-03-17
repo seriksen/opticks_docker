@@ -1,3 +1,6 @@
+# Get cuda version
+cuda_version=$(cat /usr/local/cuda/version.txt | cut -d' ' -f 3)
+cuda_version=$(echo ${cuda_version%.*} | tr '.' '-') # ignore minor release and change . to -
 
 # A lot of these are already there, but might as well check...
 sudo yum -y install git \
@@ -16,7 +19,8 @@ sudo yum -y install git \
             libXi-devel \
             libGL-devel \
             curl-devel \
-            openssl-devel
+            openssl-devel \
+            cuda-samples-${cuda_version}.x86_64
 
 # Get gcc 4.9.3+ needed for G4.10.06.p02
 sudo yum -y install centos-release-scl
@@ -48,7 +52,8 @@ curl -L -O ${url}
 tar zxf ${boost_name}.tar.gz
 cd ${boost_name}
 ./bootstrap.sh --prefix=${dir}/$boost_name
-./b2 --prefix=${dir}/${boost_name}-install --build-dir=${dir}/${boost_name}-build --with-system --with-thread --with-program_options --with-log --with-filesystem --with-regex install
+./b2 --prefix=${dir}/${boost_name}-install --build-dir=${dir}/${boost_name}-build --with-system --with-thread \
+--with-program_options --with-log --with-filesystem --with-regex install
 
 
 clhep_version=2.4.1.0
