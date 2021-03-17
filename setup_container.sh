@@ -39,6 +39,7 @@ run-opticks() {
   --rm=true \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /etc/localtime:/etc/localtime:ro \
+  --cap-add SYS_ADMIN --device /dev/fuse \
   ${optix_mounts} $@\
   $(container-name)
 }
