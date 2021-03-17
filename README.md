@@ -1,1 +1,0 @@
-# opticks_docker
