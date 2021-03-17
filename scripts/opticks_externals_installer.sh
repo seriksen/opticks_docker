@@ -83,7 +83,7 @@ cd xerces-c-${xerces_version}
 ./configure --prefix=${dir}/xerces-c-${xerces_version}-install
 sudo make install
 
-
+scl enable devtoolset-7 bash
 g4_version=geant4.10.06.p02
 dir=${OPTICKS_EXTERNALS}/g4
 mkdir -p ${dir}
