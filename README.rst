@@ -35,3 +35,10 @@ eg; :code:`build-optix optix=NVIDIA-OptiX-SDK-7.0.0.sh user=sam`
 
 .. todo::
     use optix_docker as base image
+
+Starting visualisation
+----------------------
+To start visualisation, run :code:`start_desktop`.
+This will ask you to set a password and output the address to connect to.
+
+To kill the vnc server, type :code:`kill_desktop`.

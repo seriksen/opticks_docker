@@ -1,3 +1,5 @@
+# Install the externals required for opticks
+
 # Get cuda version
 cuda_version=$(cat /usr/local/cuda/version.txt | cut -d' ' -f 3)
 cuda_version=$(echo ${cuda_version%.*} | tr '.' '-') # ignore minor release and change . to -
