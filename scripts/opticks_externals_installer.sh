@@ -1,4 +1,17 @@
 # Install the externals required for opticks
+export OPTICKS_EXTERNALS="${OPTICKS_EXTERNALS:-${HOME}/opticks_externals}"
+
+# GCC
+cd OPTICKS_EXTERNALS
+wget http://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-7.3.0/gcc-7.3.0.tar.gz
+tar zxf gcc-7.3.0.tar.gz
+cd gcc-7.3.0
+yum -y install bzip2
+./contrib/download_prerequisites
+./configure --disable-multilib --enable-languages=c,c++
+make -j 10
+make install
+
 
 # Get cuda version
 cuda_version=$(cat /usr/local/cuda/version.txt | cut -d' ' -f 3)
@@ -24,7 +37,6 @@ sudo yum -y install git \
             openssl-devel \
             cuda-samples-${cuda_version}.x86_64
 
-export OPTICKS_EXTERNALS="${OPTICKS_EXTERNALS:-${HOME}/opticks_externals}"
 
 cmake_ver=3.14.1
 dir=${OPTICKS_EXTERNALS}/cmake

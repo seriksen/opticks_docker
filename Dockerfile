@@ -63,14 +63,6 @@ RUN cd /home/${DOCKER_USER} && yes | bash ${OptixInstallScript}
 COPY scripts/bashrc_customisation.sh /home/${DOCKER_USER}/.bashrc_customisation.sh
 RUN cd && echo "source ${HOME}/.bashrc_customisation.sh" >> .bashrc
 
-# Get GCC for Geant4
-RUN sudo yum -y install centos-release-scl
-RUN sudo yum -y install devtoolset-7
-RUN echo "scl enable devtoolset-7 bash" >> .bash_profile
-
-# Set LD_LIBRARY_PATH
-ENV LD_LIBRARY_PATH=/usr/lib64:/usr/lib:${LD_LIRARY_PATH}
-
 COPY scripts/opticks_externals_installer.sh /home/${DOCKER_USER}
 RUN cd /home/${DOCKER_USER} \
     && export OPTICKS_EXTERNALS=/home/${DOCKER_USER}/opticks_externals \
