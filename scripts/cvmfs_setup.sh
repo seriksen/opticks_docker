@@ -40,3 +40,5 @@ echo 'sft.cern.ch /cvmfs/sft.cern.ch cvmfs defaults 0 0' | sudo tee --append /et
 sudo mount /cvmfs/sft.cern.ch
 sudo mount /cvmfs/lz.opensciencegrid.org
 sudo service autofs stop
+
+echo "source /cvmfs/lz.opensciencegrid.org/external/gcc/8.2.0/x86_64-centos7/setup.sh" >> .bashrc
