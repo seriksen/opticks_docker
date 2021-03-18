@@ -64,8 +64,10 @@ COPY scripts/bashrc_customisation.sh /home/${DOCKER_USER}/.bashrc_customisation.
 RUN cd && echo "source ${HOME}/.bashrc_customisation.sh" >> .bashrc
 
 COPY scripts/opticks_externals_installer.sh /home/${DOCKER_USER}
+COPY scripts/gcc_installer.sh /home/${DOCKER_USER}
 RUN cd /home/${DOCKER_USER} \
     && export OPTICKS_EXTERNALS=/home/${DOCKER_USER}/opticks_externals \
+    && bash gcc_installer.sh \
     && bash opticks_externals_installer.sh
 
 
