@@ -1,4 +1,16 @@
+#!/bin/bash
+#############################################################################
+#
 # Install the externals required for opticks
+# This is more or less a direct copy of that in the installation guide
+#
+# Plan for this:
+# - Most of these externals will come from cvmfs for LZ as per the
+#   standard (CPU) Docker containers so this function (excluding
+#   yum-installs) will be via cvmfs (sft.cern.ch or lz.opensciencegrid.org)
+#
+#############################################################################
+
 export OPTICKS_EXTERNALS="${OPTICKS_EXTERNALS:-${HOME}/opticks_externals}"
 
 # GCC
@@ -8,7 +20,7 @@ tar zxf gcc-7.3.0.tar.gz
 cd gcc-7.3.0
 yum -y install bzip2
 ./contrib/download_prerequisites
-./configure --disable-multilib --enable-languages=c,c++
+./configure --disable-multilib
 make -j 10
 make install
 

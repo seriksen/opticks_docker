@@ -63,11 +63,6 @@ RUN cd /home/${DOCKER_USER} && yes | bash ${OptixInstallScript}
 COPY scripts/bashrc_customisation.sh /home/${DOCKER_USER}/.bashrc_customisation.sh
 RUN cd && echo "source ${HOME}/.bashrc_customisation.sh" >> .bashrc
 
-# CVMFS
-COPY scripts/cvmfs_setup.sh /home/${DOCKER_USER}
-RUN cd /home/${DOCKER_USER} \
-    && bash cvmfs_setup.sh
-
 COPY scripts/opticks_externals_installer.sh /home/${DOCKER_USER}
 RUN cd /home/${DOCKER_USER} \
     && export OPTICKS_EXTERNALS=/home/${DOCKER_USER}/opticks_externals \
