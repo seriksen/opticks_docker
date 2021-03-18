@@ -48,3 +48,11 @@ To start visualisation, run :code:`start_desktop`.
 This will ask you to set a password and output the address to connect to.
 
 To kill the vnc server, type :code:`kill_desktop`.
+
+
+Systems tested on
+-----------------
+
+* Bristol HEP GPU01
+   - Tesla T4 (x6)
+   - via F5 vpn (significant framerate reduction?)
