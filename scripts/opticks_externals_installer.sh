@@ -1,4 +1,20 @@
+#!/bin/bash
+#############################################################################
+#
 # Install the externals required for opticks
+# This is more or less a direct copy of that in the installation guide
+#
+# Plan for this:
+# - Most of these externals will come from cvmfs for LZ as per the
+#   standard (CPU) Docker containers so this function (excluding
+#   yum-installs) will be via cvmfs (sft.cern.ch or lz.opensciencegrid.org)
+# - Using cvmfs means host machine must have fuse and start docker container
+#   with `--cap-add SYS_ADMIN --device /dev/fuse`
+#
+#############################################################################
+
+export OPTICKS_EXTERNALS="${OPTICKS_EXTERNALS:-${HOME}/opticks_externals}"
+
 
 # Get cuda version
 cuda_version=$(cat /usr/local/cuda/version.txt | cut -d' ' -f 3)
@@ -24,12 +40,6 @@ sudo yum -y install git \
             openssl-devel \
             cuda-samples-${cuda_version}.x86_64
 
-# Get gcc 4.9.3+ needed for G4.10.06.p02
-sudo yum -y install centos-release-scl
-sudo yum -y install devtoolset-7
-scl enable devtoolset-7 bash
-
-export OPTICKS_EXTERNALS="${OPTICKS_EXTERNALS:-${HOME}/opticks_externals}"
 
 cmake_ver=3.14.1
 dir=${OPTICKS_EXTERNALS}/cmake
@@ -84,7 +94,7 @@ cd xerces-c-${xerces_version}
 sudo make install
 
 
-g4_version=geant4.10.06.p02
+g4_version=geant4.10.03.p01
 dir=${OPTICKS_EXTERNALS}/g4
 mkdir -p ${dir}
 cd ${dir}

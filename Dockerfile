@@ -63,11 +63,8 @@ RUN cd /home/${DOCKER_USER} && yes | bash ${OptixInstallScript}
 COPY scripts/bashrc_customisation.sh /home/${DOCKER_USER}/.bashrc_customisation.sh
 RUN cd && echo "source ${HOME}/.bashrc_customisation.sh" >> .bashrc
 
-
-# Set LD_LIBRARY_PATH
-ENV LD_LIBRARY_PATH=/usr/lib64:/usr/lib:${LD_LIRARY_PATH}
-
 COPY scripts/opticks_externals_installer.sh /home/${DOCKER_USER}
+COPY scripts/geant4_installer.sh /home/${DOCKER_USER}
 RUN cd /home/${DOCKER_USER} \
     && export OPTICKS_EXTERNALS=/home/${DOCKER_USER}/opticks_externals \
     && bash opticks_externals_installer.sh

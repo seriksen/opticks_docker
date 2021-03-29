@@ -1,46 +1,16 @@
-opticks_docker
-==============
-
-Dockerfile for creating docker images for use with Opticks GPU simulations.
-Currently it's just an extention of `optix_docker <https://github.com/seriksen/optix_docker>`_ where
-the externals are installed.
-
-You still need to clone and build opticks as descriped in the installation guide
-`here <https://github.com/seriksen/Opticks_install_guide>`_.
-
-.. todo::
-   Add to dockerfile to build opticks rather than that being an extra step. Though worthwhile having this as the
-   'has all externals' version for a future CI.
-
-Dockerfile overview
--------------------
-
-Base image: :code:`nvidia/cudagl`
-
-* CentOS 7
-* NVidia Cuda 10.2
-* NVidia OptiX (6.0.0, 6.5.0, 7.0.0)
-* Geant4.10.06.p02
+**************
+Opticks Docker
+**************
+Repository containing the Dockerfile and bash scripts needed to create a docker image which has all of the externals
+needed for `Opticks <https://bitbucket.org/SamEriksen/opticks/src/master/>`_.
 
 Usage
------
+=====
 
-.. code-block:: sh
+1. Download NVidia OptiX and put in the optix_install_scripts directory.
+2. run :code:`./opticks_docker.sh -h` to get all options on running/building container
 
-    source setup_container.sh
-    build-opticks-container
-    run-opticks-container
-
-Build args;
-
-* Optix Build Version. Set by :code:`optix=`
-* Docker user. Set by :code:`user=`
-
-eg; :code:`build-optix optix=NVIDIA-OptiX-SDK-7.0.0.sh user=sam`
-
-
-.. todo::
-    use optix_docker as base image
+To run container from dockerhub: :code:`./opticks_docker.sh -r 1 -o 6.5.0 -d 1`
 
 Starting visualisation
 ----------------------
@@ -48,3 +18,16 @@ To start visualisation, run :code:`start_desktop`.
 This will ask you to set a password and output the address to connect to.
 
 To kill the vnc server, type :code:`kill_desktop`.
+
+To see what these do, look in :code:`scripts/bashrc_customisation.sh`
+
+Dockerhub
+---------
+Images can be found on `dockerhub <https://hub.docker.com/r/sameriksen/opticks_docker>`_
+
+
+Systems tested on
+=================
+
+* Bristol HEP GPU01
+   - Tesla T4 (x6)
