@@ -25,22 +25,9 @@ Base image: :code:`nvidia/cudagl`
 Usage
 -----
 
-.. code-block:: sh
+Download NVidia OptiX and put in the optix_install_scripts directory.
+Then run opticks_docker.sh
 
-    source setup_container.sh
-    build-opticks-container
-    run-opticks-container
-
-Build args;
-
-* Optix Build Version. Set by :code:`optix=`
-* Docker user. Set by :code:`user=`
-
-eg; :code:`build-optix optix=NVIDIA-OptiX-SDK-7.0.0.sh user=sam`
-
-
-.. todo::
-    use optix_docker as base image
 
 Starting visualisation
 ----------------------
@@ -55,4 +42,3 @@ Systems tested on
 
 * Bristol HEP GPU01
    - Tesla T4 (x6)
-   - via F5 vpn (significant framerate reduction?)
