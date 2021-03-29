@@ -14,7 +14,7 @@
 
 container-name(){
 
-  if [ ${local_build} -eq 0 ]
+  if [ "${docker_hub}" -eq 0 ]
   then
     echo "opticks_docker:${optix_version}"
   else
@@ -82,7 +82,7 @@ run-opticks() {
   # Start the container
   docker run -it \
   --runtime=nvidia \
-  --name=$(container-name) \
+  --name=${run_name} \
   --gpus 1 \
   --security-opt seccomp=unconfined \
   --init \
@@ -112,6 +112,7 @@ https://hub.docker.com/repository/docker/sameriksen/opticks_docker
 -d Set to 1 to use dockerhub. Default is 0. Changes container name: sameriksen/opticks_docker to opticks_docker
 -s search location for optix libraries on host machine. Default is /usr/lib64/* (centOS7)
 -u Name for inside Docker container. Default is sam
+-n Container run name. Default is opticks
 -h prints this help text
 
 Sam Eriksen, 2021
@@ -126,7 +127,7 @@ parse_args()
     exit
   fi
 
-  while getopts ":b:r:o:d:s:u:h" opt
+  while getopts ":b:r:o:d:s:u:n:h" opt
   do
     case ${opt} in
        b) build_container="${OPTARG}"
@@ -140,6 +141,8 @@ parse_args()
        s) search_loc="${OPTARG}"
          ;;
        u) docker_user="${OPTARG}"
+         ;;
+       n) run_name="${OPTARG}"
          ;;
        h) print_usage && exit 0
          ;;
@@ -159,6 +162,7 @@ main() {
   local docker_hub=0
   local search_loc="/usr/lib64/*"
   local docker_user="sam"
+  local run_name="opticks"
   parse_args "$@"
 
   build-opticks
