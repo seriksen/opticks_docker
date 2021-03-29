@@ -104,7 +104,7 @@ This script is for building and running a docker container for Opticks.
 For more information, see github;
 https://github.com/seriksen/opticks_docker
 Docker containers can be found on dockerhub at;
-https://hub.docker.com/repository/docker/sameriksen/opticks_docker
+https://hub.docker.com/r/sameriksen/opticks_docker
 
 -b Set to 1 to build the container. Set to zero to not. Default is 0
 -r Set to 1 to run the container. Set to zero to not. Default is 0

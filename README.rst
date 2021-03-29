@@ -14,7 +14,7 @@ You still need to clone and build opticks as descriped in the installation guide
 
 Dockerhub
 ---------
-Images can be found on `dockerhub <https://hub.docker.com/repository/docker/sameriksen/opticks_docker>`_
+Images can be found on `dockerhub <https://hub.docker.com/r/sameriksen/opticks_docker>`_
 
 Usage
 -----
