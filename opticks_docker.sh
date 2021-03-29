@@ -55,6 +55,7 @@ build-opticks() {
   fi
 
   docker build --no-cache=true \
+  --network=host \
   -t $(container-name) \
   --build-arg "optix=$(get_optix_file_name)" \
   --build-arg "user=${docker_user}" .
